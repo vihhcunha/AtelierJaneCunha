@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy container app to Azure Web App - AtelierJaneCunha
 
 on:
@@ -10,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  CI:
     runs-on: 'ubuntu-latest'
 
     steps:
@@ -31,11 +28,11 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ffc2a40de7154d7db7c24e19e6c8d912 }}/atelierjanecunha:${{ github.sha }}
-        file: ./Dockerfile
+        file: ../Dockerfile
 
-  deploy:
+  CD:
     runs-on: ubuntu-latest
-    needs: build
+    needs: CI
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
