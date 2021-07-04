@@ -28,7 +28,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_ffc2a40de7154d7db7c24e19e6c8d912 }}/atelierjanecunha:${{ github.sha }}
-        file: ../Dockerfile
+        file: ./Dockerfile
 
   CD:
     runs-on: ubuntu-latest
