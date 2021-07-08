@@ -39,4 +39,4 @@ __Esse sistema está em desenvolvimento__
  * Deploy automatizado com Docker, GitHub Actions e Azure AppService
  
  ## Sobre
- Esse projeto foi desenvolvido pelo Vinicius Cunha, com o objetivo de entregar um produto de qualidade e bem organizado
+ Esse projeto foi desenvolvido pelo Vinicius Cunha, com o objetivo de entregar um produto de qualidade e bem estruturado.
