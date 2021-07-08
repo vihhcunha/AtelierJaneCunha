@@ -5,6 +5,7 @@ html {
   font-family: "Quicksand";
   max-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 * {
@@ -123,6 +124,10 @@ p {
   padding-top: 100px;
 }
 
+.padding-100px {
+  padding: 100px;
+}
+
 .grid {
   display: grid;
 }
@@ -133,9 +138,6 @@ p {
 
 .grid-template-rows-2 {
   grid-template-rows: 1fr 1fr;
-}
-
-.grid-item {
 }
 
 .gap-15px {
@@ -261,6 +263,26 @@ p {
     width: 100%;
 }
 
+.width-80-perc{
+  width: 80%;
+}
+
+.width-70-perc{
+  width: 70%;
+}
+
+.width-50-perc{
+  width: 50%;
+}
+
+.width-40-perc{
+  width: 40%;
+}
+
+.width-30-perc{
+  width: 30%;
+}
+
 .border-radius{
     border-radius: 5px;
 }
@@ -352,6 +374,72 @@ p {
 .social-media-home img{
   height: 100%;
   cursor: pointer;
+}
+
+footer{
+  background-color: #333333;
+  padding: 50px 0px 20px 20px;
+  border: none;
+  color: #8f8f8f;
+}
+
+footer hr{
+  border: 0 none;
+  height: 1px !important;
+  background-color: #8f8f8f;
+  width: 80vw;
+  margin: auto;
+  opacity: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-links{
+  padding-top: 30px;
+}
+
+.footer-links p{
+  font-size: 18px;
+}
+
+.footer-links a{
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.footer-links a:hover{
+  text-decoration: none;
+  display: block;
+  color: #cccccc;
+  transition: all 0.3s;
+}
+
+.footer-links ul{
+  list-style: none;
+  padding: 0px;
+}
+
+.footer-medias{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.footer-medias-item{
+  width: 75px;
+  padding: 20px;
+}
+
+.footer-medias-item img{
+  transition: all 0.4s;
+}
+
+.footer-medias-item img:hover{
+  transition: all 0.4s;
+  width: 110%;
 }
 
 @media screen and (max-width: 769px) {
