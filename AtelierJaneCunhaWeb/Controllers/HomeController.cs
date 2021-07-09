@@ -17,7 +17,27 @@ namespace AtelierJaneCunhaWeb.Controllers
             _logger = logger;
         }
 
+        [Route("/home")]
+        [Route("/")]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Route("contato")]
+        public IActionResult Contato()
+        {
+            return View();
+        }
+
+        [Route("sobre-nos")]
+        public IActionResult SobreNos()
+        {
+            return View();
+        }
+
+        [Route("catalogo")]
+        public IActionResult Catalogo()
         {
             return View();
         }

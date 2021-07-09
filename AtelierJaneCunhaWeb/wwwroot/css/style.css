@@ -358,6 +358,18 @@ p {
     background-image: url(../images/compressinha.jpg);
 }
 
+.catalogo-naninhas{
+  background-image: url(../images/naninhas.jpg);
+}
+
+.catalogo-ursos{
+  background-image: url(../images/urso-teddy.jpg);
+}
+
+.catalogo-kits-promocionais{
+  background-image: url(../images/kit-patinhos.jpg);
+}
+
 .social-media-home{
   height: 120px;
   transition: all 0.6s;
