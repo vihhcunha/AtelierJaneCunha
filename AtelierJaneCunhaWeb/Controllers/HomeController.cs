@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AtelierJaneCunhaWeb.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace AtelierJaneCunhaWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration configuration)
         {
-            _logger = logger;
+            _configuration = configuration;
         }
 
         [Route("/home")]
@@ -27,6 +31,7 @@ namespace AtelierJaneCunhaWeb.Controllers
         [Route("contato")]
         public IActionResult Contato()
         {
+            ViewBag.Sucesso = null;
             return View();
         }
 
@@ -40,6 +45,37 @@ namespace AtelierJaneCunhaWeb.Controllers
         public IActionResult Catalogo()
         {
             return View();
+        }
+
+        [Route("contato")]
+        [HttpPost]
+        public async Task<IActionResult> Contato(MensagemContato mensagemContato)
+        {
+            if (!ModelState.IsValid) return View(mensagemContato);
+
+            try
+            {
+                var emailRemetente = _configuration["EmailSettings:Email"];
+                var senhaRemetente = _configuration["EmailSettings:Senha"];
+
+                using (var smtpClient = new SmtpClient("SMTP.office365.com", 587))
+                {
+                    smtpClient.Credentials = new NetworkCredential(emailRemetente, senhaRemetente);
+                    smtpClient.EnableSsl = true;
+
+                    await smtpClient.SendMailAsync(emailRemetente, mensagemContato.Email, "Contato do site institucional", mensagemContato.Nome + " - " + mensagemContato.Mensagem);
+                }
+
+                ViewBag.Sucesso = true;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Sucesso = false;
+                return View();
+            }
+
+
         }
     }
 }

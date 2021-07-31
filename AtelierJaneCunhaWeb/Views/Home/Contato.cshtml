@@ -1,4 +1,74 @@
+@model AtelierJaneCunhaWeb.Models.MensagemContato
 @{
     ViewData["Title"] = "Contato";
 }
-<p>Contato</p>
+<div class="container padding-100px">
+    <div class="margin-top-70px">
+        <h3 class="text-center">Entre em contato conosco!</h3>
+    </div>
+
+    <div class="row padding-top-50px">
+        <div class="col-12 col-md-6 padding-10px">
+
+            <h5>Entre em contato por um dos meios abaixo: </h5>
+
+            <div class="row text-center">
+                <div class="col-4">
+                    <a class="social-media-home" style="text-decoration: none; color: black;"
+                        href="https://www.instagram.com/atelier_jane_cunha/" target="_blank">
+                        <img src="./images/instagram.png">
+                        <p style="font-size: 18px;">Instagram</p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a class="social-media-home" style="text-decoration: none; color: black;"
+                        href="https://api.whatsapp.com/send?phone=5511996336197&text=" target="_blank">
+                        <img src="./images/whatsapp.png">
+                        <p style="font-size: 18px;"> WhatsApp</p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a class="social-media-home" style="text-decoration: none; color: black;" href="tel:011996336197"
+                        target="_blank">
+                        <img src="./images/phone.png">
+                        <p style="font-size: 18px;">(11) 99633-6197</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 padding-10px">
+
+            <h5>Deixe uma mensagem: </h5>
+
+            <form asp-action="Contato" method="POST">
+                <input type="text" asp-for="Nome" placeholder="Nome ..." class="input-text">
+                <span asp-validation-for="Nome" class="text-danger"></span>
+
+                <input type="text" asp-for="Email" placeholder="E-mail válido ..." class="input-text">
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <textarea type="text" asp-for="Mensagem" placeholder="Mensagem ..." class="input-text"
+                    style="max-height: 150px; padding-top: 2px; min-height: 36px;"></textarea>
+                <span asp-validation-for="Mensagem" class="text-danger"></span>
+
+                <div class="text-center padding-top-30px">
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </form>
+
+            @if (ViewBag.Sucesso == true)
+            {
+                <div class="alert alert-success margin-top-50px" role="alert">
+                    Mensagem enviada!
+                </div>
+            }
+            else if(ViewBag.Sucesso == false){
+                 <div class="alert alert-danger margin-top-50px" role="alert">
+                    Erro ao enviar mensagem!
+                </div>
+            }
+        </div>
+    </div>
+</div>
