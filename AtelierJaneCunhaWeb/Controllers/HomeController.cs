@@ -57,13 +57,14 @@ namespace AtelierJaneCunhaWeb.Controllers
             {
                 var emailRemetente = _configuration["EmailSettings:Email"];
                 var senhaRemetente = _configuration["EmailSettings:Senha"];
+                var emailDestinatarioContato = _configuration["EmailRecipientContact"];
 
                 using (var smtpClient = new SmtpClient("SMTP.office365.com", 587))
                 {
                     smtpClient.Credentials = new NetworkCredential(emailRemetente, senhaRemetente);
                     smtpClient.EnableSsl = true;
 
-                    await smtpClient.SendMailAsync(emailRemetente, mensagemContato.Email, "Contato do site institucional", mensagemContato.Nome + " - " + mensagemContato.Mensagem);
+                    await smtpClient.SendMailAsync(emailRemetente, emailDestinatarioContato, "Contato do site institucional", mensagemContato.Nome + " - " + mensagemContato.Email + " - " + mensagemContato.Mensagem);
                 }
 
                 ViewBag.Sucesso = true;
@@ -74,8 +75,6 @@ namespace AtelierJaneCunhaWeb.Controllers
                 ViewBag.Sucesso = false;
                 return View();
             }
-
-
         }
     }
 }
